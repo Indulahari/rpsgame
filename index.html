@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Rock Paper Scissors</title>
+    <meta name="description" content="Modern Rock Paper Scissors game with avatars, sounds, themes, and advanced features">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body data-theme="light">
+    <!-- Dynamic Background -->
+    <div class="background-container">
+        <div class="background-gradient" id="background-gradient"></div>
+        <div class="background-particles" id="background-particles"></div>
+    </div>
+
+    <div class="container">
+        <!-- Header with Controls -->
+        <header class="header">
+            <h1 class="header__title">🎮 Rock Paper Scissors</h1>
+            <div class="header__controls">
+                <button id="mode-toggle" class="btn btn--mode" aria-label="Toggle game mode">
+                    <span id="mode-text">Normal Mode</span>
+                </button>
+                <button id="theme-toggle" class="btn btn--theme" aria-label="Toggle theme">
+                    <span id="theme-text">🌙 Dark</span>
+                </button>
+                <button id="music-toggle" class="btn btn--music" aria-label="Toggle background music">
+                    <span id="music-text">🎵 Music</span>
+                </button>
+            </div>
+        </header>
+
+        <main class="main">
+            <!-- Timer (Timed Mode Only) -->
+            <div id="timer-container" class="timer-container hidden">
+                <div class="timer-label">Time Remaining:</div>
+                <div id="timer-display" class="timer-display">3</div>
+                <div class="timer-bar">
+                    <div id="timer-progress" class="timer-progress"></div>
+                </div>
+            </div>
+
+            <!-- Game Arena -->
+            <section class="game-arena">
+                <!-- Player Avatar -->
+                <div class="avatar-container avatar-container--player">
+                    <div id="player-avatar" class="avatar avatar--neutral">
+                        <div class="avatar__face">😐</div>
+                        <div class="avatar__label">You</div>
+                    </div>
+                </div>
+
+                <!-- Choice Reveal Area -->
+                <div class="reveal-area">
+                    <div id="player-choice" class="choice-reveal choice-reveal--player">
+                        <div class="choice-card">
+                            <div class="choice-card__front">?</div>
+                            <div class="choice-card__back">🪨</div>
+                        </div>
+                    </div>
+                    
+                    <div class="vs-indicator">VS</div>
+                    
+                    <div id="computer-choice" class="choice-reveal choice-reveal--computer">
+                        <div class="choice-card">
+                            <div class="choice-card__front">?</div>
+                            <div class="choice-card__back">🪨</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Computer Avatar -->
+                <div class="avatar-container avatar-container--computer">
+                    <div id="computer-avatar" class="avatar avatar--neutral">
+                        <div class="avatar__face">🤖</div>
+                        <div class="avatar__label">Computer</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Game Mode Display -->
+            <div id="mode-display" class="mode-display">
+                <div id="mode-info" class="mode-info">Normal Mode</div>
+                <div id="mode-description" class="mode-description">Classic Rock Paper Scissors</div>
+            </div>
+
+            <!-- Result Display -->
+            <div id="result-panel" class="result-panel" aria-live="polite">
+                <div id="result-text" class="result-text">Choose your move!</div>
+            </div>
+
+        </main>
+
+        <!-- Footer with Controls -->
+        <footer class="footer">
+            <!-- Choice Buttons -->
+            <div class="choice-buttons">
+                <button class="choice-btn" data-choice="rock" aria-label="Choose Rock (R key)">
+                    <div class="choice-btn__icon">🪨</div>
+                    <div class="choice-btn__label">Rock</div>
+                    <div class="choice-btn__key">R</div>
+                </button>
+                <button class="choice-btn" data-choice="paper" aria-label="Choose Paper (P key)">
+                    <div class="choice-btn__icon">📄</div>
+                    <div class="choice-btn__label">Paper</div>
+                    <div class="choice-btn__key">P</div>
+                </button>
+                <button class="choice-btn" data-choice="scissors" aria-label="Choose Scissors (S key)">
+                    <div class="choice-btn__icon">✂️</div>
+                    <div class="choice-btn__label">Scissors</div>
+                    <div class="choice-btn__key">S</div>
+                </button>
+            </div>
+
+            <!-- Streak & Progress (moved below choice buttons) -->
+            <div class="streak-container">
+                <div class="streak-info">
+                    <span class="streak-label">Current Streak:</span>
+                    <span id="current-streak" class="streak-value">0</span>
+                </div>
+                <div class="progress-bar">
+                    <div id="streak-progress" class="progress-fill"></div>
+                </div>
+                <div class="achievement-badges" id="achievement-badges"></div>
+                <div class="combo-effects" id="combo-effects"></div>
+            </div>
+
+            <!-- Stats & Controls -->
+            <div class="footer-controls">
+                <div class="stats-display">
+                    <div class="stat-item">
+                        <span class="stat-label">Games:</span>
+                        <span id="total-games" class="stat-value">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Win Rate:</span>
+                        <span id="win-percentage" class="stat-value">0%</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Best Streak:</span>
+                        <span id="longest-streak" class="stat-value">0</span>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <a href="rules.html" class="btn btn--rules" aria-label="View game rules">
+                        <span>📖 Rules</span>
+                    </a>
+                    <button id="share-btn" class="btn btn--share" aria-label="Share result">
+                        <span>📤 Share</span>
+                    </button>
+                    <button id="mute-toggle" class="btn btn--mute" aria-label="Toggle sound">
+                        <span id="mute-text">🔊 Sound</span>
+                    </button>
+                    <button id="reset-btn" class="btn btn--reset" aria-label="Reset game">
+                        <span>🔄 Reset</span>
+                    </button>
+                </div>
+            </div>
+        </footer>
+        
+        <!-- Achievements Display (moved to bottom) -->
+        <div id="achievements-panel" class="achievements-panel achievements-panel--bottom">
+            <div class="achievements-header">
+                <span class="achievements-title">🏅 Achievements & Progress</span>
+                <span id="player-level" class="player-level">Level 1</span>
+            </div>
+            <div id="achievement-badges" class="achievement-badges"></div>
+            <div class="xp-bar">
+                <div class="xp-label">XP: <span id="current-xp">0</span>/<span id="next-level-xp">100</span></div>
+                <div class="xp-progress-bar">
+                    <div id="xp-progress" class="xp-progress-fill"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Background Particles -->
+    <div id="background-particles" class="background-particles"></div>
+    
+    <!-- Confetti Container -->
+    <div id="confetti-container" class="confetti-container"></div>
+
+    <script src="app_complete.js"></script>
+</body>
+</html>

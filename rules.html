@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors - Game Rules</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .rules-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .rules-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .rules-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+            margin-bottom: 1rem;
+        }
+        
+        .rules-section {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .choice-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .choice-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 1rem;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .choice-card:hover {
+            border-color: #667eea;
+            transform: translateY(-2px);
+        }
+        
+        .choice-icon {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .choice-name {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .mode-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .mode-card {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2));
+            border-radius: 15px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .mode-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #667eea;
+        }
+        
+        .powerup-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .powerup-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 1rem;
+            text-align: center;
+        }
+        
+        .powerup-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .back-button:hover {
+            transform: translateY(-2px);
+        }
+        
+        .achievement-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .achievement-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.5rem;
+            margin-bottom: 0.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+        }
+        
+        .achievement-icon {
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body data-theme="light">
+    <!-- Dynamic Background -->
+    <div class="background-container">
+        <div class="background-gradient" id="background-gradient"></div>
+        <div class="background-particles" id="background-particles"></div>
+    </div>
+
+    <a href="index.html" class="back-button">
+        ← Back to Game
+    </a>
+
+    <div class="rules-container">
+        <div class="rules-header">
+            <h1 class="rules-title">🎮 Rock Paper Scissors Rules</h1>
+            <p>Master the classic game with modern twists!</p>
+        </div>
+
+        <!-- Basic Rules -->
+        <div class="rules-section">
+            <h2 class="section-title">🎯 Basic Rules</h2>
+            <p>Rock Paper Scissors is a simple hand game where each player simultaneously forms one of three shapes:</p>
+            
+            <div class="choice-grid">
+                <div class="choice-card">
+                    <div class="choice-icon">🪨</div>
+                    <div class="choice-name">Rock</div>
+                    <p>Crushes Scissors</p>
+                </div>
+                <div class="choice-card">
+                    <div class="choice-icon">📄</div>
+                    <div class="choice-name">Paper</div>
+                    <p>Covers Rock</p>
+                </div>
+                <div class="choice-card">
+                    <div class="choice-icon">✂️</div>
+                    <div class="choice-name">Scissors</div>
+                    <p>Cuts Paper</p>
+                </div>
+            </div>
+
+            <h3>🏆 How to Win:</h3>
+            <ul>
+                <li><strong>Rock beats Scissors</strong> - Rock crushes scissors</li>
+                <li><strong>Paper beats Rock</strong> - Paper covers rock</li>
+                <li><strong>Scissors beats Paper</strong> - Scissors cut paper</li>
+                <li><strong>Same choice = Draw</strong> - Try again!</li>
+            </ul>
+        </div>
+
+        <!-- Game Modes -->
+        <div class="rules-section">
+            <h2 class="section-title">🎮 Game Modes</h2>
+            
+            <div class="mode-grid">
+                <div class="mode-card">
+                    <div class="mode-title">🎯 Normal Mode</div>
+                    <p>Classic Rock Paper Scissors with no time pressure. Take your time to make the perfect choice!</p>
+                </div>
+                
+                <div class="mode-card">
+                    <div class="mode-title">⏰ Timed Mode</div>
+                    <p>You have 3 seconds to make your choice! Quick thinking required. Auto-lose if time runs out.</p>
+                </div>
+                
+                <div class="mode-card">
+                    <div class="mode-title">🎯 Challenge Mode</div>
+                    <p>Get 5 wins within 60 seconds! Complete the challenge to earn bonus XP and power-ups.</p>
+                </div>
+                
+                <div class="mode-card">
+                    <div class="mode-title">🏆 Tournament Mode</div>
+                    <p>Best of 5 rounds competition! Win more rounds than you lose to claim victory and big rewards.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Power-ups -->
+        <div class="rules-section">
+            <h2 class="section-title">⚡ Power-ups</h2>
+            <p>Earn power-ups through gameplay, level-ups, and completing challenges:</p>
+            
+            <div class="powerup-grid">
+                <div class="powerup-card">
+                    <div class="powerup-icon">🛡️</div>
+                    <div class="powerup-name"><strong>Shield</strong></div>
+                    <p>Blocks one loss and turns it into a draw</p>
+                </div>
+                
+                <div class="powerup-card">
+                    <div class="powerup-icon">⚡</div>
+                    <div class="powerup-name"><strong>Double Win</strong></div>
+                    <p>Your next win counts as 2 wins for streaks and stats</p>
+                </div>
+                
+                <div class="powerup-card">
+                    <div class="powerup-icon">👁️</div>
+                    <div class="powerup-name"><strong>Peek</strong></div>
+                    <p>See the computer's choice for 3 seconds before deciding</p>
+                </div>
+                
+                <div class="powerup-card">
+                    <div class="powerup-icon">❄️</div>
+                    <div class="powerup-name"><strong>Time Freeze</strong></div>
+                    <p>Pause the timer for 5 seconds in timed mode</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Level System -->
+        <div class="rules-section">
+            <h2 class="section-title">🌟 Level & Experience System</h2>
+            <h3>📈 Earning XP:</h3>
+            <ul>
+                <li><strong>Win:</strong> 10 XP + (2 × current streak)</li>
+                <li><strong>Draw:</strong> 3 XP</li>
+                <li><strong>Loss:</strong> 1 XP (participation)</li>
+                <li><strong>Challenge Complete:</strong> 100 bonus XP</li>
+                <li><strong>Tournament Win:</strong> 200 bonus XP</li>
+                <li><strong>Daily Challenge:</strong> 150 bonus XP</li>
+            </ul>
+            
+            <h3>🎁 Level Up Rewards:</h3>
+            <ul>
+                <li>Random power-up</li>
+                <li>Confetti celebration</li>
+                <li>Increased XP requirements for next level</li>
+            </ul>
+        </div>
+
+        <!-- Achievements -->
+        <div class="rules-section">
+            <h2 class="section-title">🏅 Achievements</h2>
+            <p>Unlock badges by achieving win streaks:</p>
+            
+            <ul class="achievement-list">
+                <li class="achievement-item">
+                    <span class="achievement-icon">🔥</span>
+                    <div>
+                        <strong>Triple Win</strong> - Get a 3-win streak
+                    </div>
+                </li>
+                <li class="achievement-item">
+                    <span class="achievement-icon">⚡</span>
+                    <div>
+                        <strong>Unstoppable</strong> - Get a 5-win streak
+                    </div>
+                </li>
+                <li class="achievement-item">
+                    <span class="achievement-icon">👑</span>
+                    <div>
+                        <strong>Legendary</strong> - Get a 10-win streak
+                    </div>
+                </li>
+                <li class="achievement-item">
+                    <span class="achievement-icon">🌟</span>
+                    <div>
+                        <strong>Champion</strong> - Get a 15-win streak
+                    </div>
+                </li>
+                <li class="achievement-item">
+                    <span class="achievement-icon">💎</span>
+                    <div>
+                        <strong>Diamond</strong> - Get a 20-win streak
+                    </div>
+                </li>
+            </ul>
+            
+            <p><em>Note: Badges appear when you reach the streak and disappear if your streak drops below the requirement.</em></p>
+        </div>
+
+        <!-- Daily Challenges -->
+        <div class="rules-section">
+            <h2 class="section-title">📅 Daily Challenges</h2>
+            <ul>
+                <li>New challenge every day (3-7 wins required)</li>
+                <li>Complete for bonus XP and double power-up rewards</li>
+                <li>Progress carries over throughout the day</li>
+                <li>Resets at midnight</li>
+            </ul>
+        </div>
+
+        <!-- Controls -->
+        <div class="rules-section">
+            <h2 class="section-title">🎮 Controls</h2>
+            <h3>🖱️ Mouse Controls:</h3>
+            <ul>
+                <li>Click choice buttons to play</li>
+                <li>Click mode button to cycle through game modes</li>
+                <li>Click music button to toggle background music</li>
+                <li>Click theme button to change visual theme</li>
+            </ul>
+            
+            <h3>⌨️ Keyboard Shortcuts:</h3>
+            <ul>
+                <li><strong>R</strong> - Choose Rock</li>
+                <li><strong>P</strong> - Choose Paper</li>
+                <li><strong>S</strong> - Choose Scissors</li>
+                <li><strong>M</strong> - Toggle mute</li>
+                <li><strong>Backspace</strong> - Reset game</li>
+            </ul>
+        </div>
+
+        <!-- Tips -->
+        <div class="rules-section">
+            <h2 class="section-title">💡 Pro Tips</h2>
+            <ul>
+                <li><strong>Build Streaks:</strong> Focus on maintaining win streaks for maximum XP</li>
+                <li><strong>Use Power-ups Wisely:</strong> Save shields for important moments</li>
+                <li><strong>Try Different Modes:</strong> Each mode offers unique challenges and rewards</li>
+                <li><strong>Complete Daily Challenges:</strong> Great source of XP and power-ups</li>
+                <li><strong>Watch for Patterns:</strong> The computer is random, but streaks happen!</li>
+                <li><strong>Level Up Regularly:</strong> Higher levels unlock more power-ups</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Add some background particles
+        function createBackgroundParticles() {
+            const container = document.getElementById('background-particles');
+            
+            for (let i = 0; i < 20; i++) {
+                const particle = document.createElement('div');
+                particle.style.cssText = `
+                    position: absolute;
+                    width: ${2 + Math.random() * 3}px;
+                    height: ${2 + Math.random() * 3}px;
+                    background: rgba(255, 255, 255, 0.1);
+                    border-radius: 50%;
+                    left: ${Math.random() * 100}%;
+                    animation: particleFloat ${8 + Math.random() * 4}s linear infinite;
+                    animation-delay: ${Math.random() * 8}s;
+                `;
+                container.appendChild(particle);
+            }
+        }
+
+        // Add particle animation CSS
+        const particleStyle = document.createElement('style');
+        particleStyle.textContent = `
+            @keyframes particleFloat {
+                0% {
+                    transform: translateY(100vh) rotate(0deg);
+                    opacity: 0;
+                }
+                10% { opacity: 1; }
+                90% { opacity: 1; }
+                100% {
+                    transform: translateY(-100px) rotate(360deg);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(particleStyle);
+
+        // Initialize particles when page loads
+        document.addEventListener('DOMContentLoaded', createBackgroundParticles);
+    </script>
+</body>
+</html>
